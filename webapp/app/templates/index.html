@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css"/>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/css/tokenfield-typeahead.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/css/bootstrap-tokenfield.css">
+  <!--<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">-->
+  <script src="vendor/jquery/jquery-1.11.2.min.js"></script>
+  <script src="vendor/typeahead/typeahead.js"></script>
+  <script src="vendor/tagsinput/bootstrap-tagsinput.js"></script>
+  
+  <style>
+.fade-carousel {
+    position: relative;
+    height: 100vh;
+}
+.fade-carousel .carousel-inner .item {
+  height: 100vh;
+}
+.fade-carousel .carousel-indicators > li {
+  margin: 0 2px;
+  margin-bottom: 30px;
+  background-color: #f39c12;
+  border-color: #f39c12;
+  opacity: .7;
+}
+.fade-carousel .carousel-indicators > li.active {
+  width: 10px;
+  height: 10px;
+  opacity: 1;
+}
+
+/********************************/
+/*          Hero Headers        */
+/********************************/
+.hero {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0 rgba(0,0,0,.75);
+    -webkit-transform: translate3d(-50%,-50%,0);
+     -moz-transform: translate3d(-50%,-50%,0);
+      -ms-transform: translate3d(-50%,-50%,0);
+       -o-transform: translate3d(-50%,-50%,0);
+        transform: translate3d(-50%,-50%,0);
+}
+
+.hero h1 {
+  font-size: 6em;    
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+.fade-carousel .carousel-inner .item .hero {
+  opacity: 0;
+  -webkit-transition: 2s all ease-in-out .1s;
+     -moz-transition: 2s all ease-in-out .1s; 
+    -ms-transition: 2s all ease-in-out .1s; 
+     -o-transition: 2s all ease-in-out .1s; 
+      transition: 2s all ease-in-out .1s; 
+}
+.fade-carousel .carousel-inner .item.active .hero {
+  opacity: 1;
+  -webkit-transition: 2s all ease-in-out .1s;
+     -moz-transition: 2s all ease-in-out .1s; 
+    -ms-transition: 2s all ease-in-out .1s; 
+     -o-transition: 2s all ease-in-out .1s; 
+      transition: 2s all ease-in-out .1s;    
+}
+
+/********************************/
+/*            Overlay           */
+/********************************/
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: #080d15;
+  opacity: .4;
+}
+
+/********************************/
+/*          Custom Buttons      */
+/********************************/
+a.scroll {padding: 20px 40px; border-radius: 5px; font-size: 1.2em;}
+a.scroll,
+a.scroll:focus {
+  color: #f5f5f5;
+  background-color: #1abc9c;
+  border-color: #1abc9c;
+  outline: none;
+  margin: 20px auto;
+}
+
+/********************************/
+/*       Slides backgrounds     */
+/********************************/
+.fade-carousel .slides .slide-1, 
+.fade-carousel .slides .slide-2{
+  height: 100vh;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.fade-carousel .slides .slide-1 {
+  background-image: url(https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=79f96121806d64f986dc5e5d9308afb1&auto=format&fit=crop&w=1353&q=80); 
+}
+.fade-carousel .slides .slide-2 {
+  background-image: url(https://images.unsplash.com/photo-1488375634201-b85b28653a79?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1cc3542fead73589bb0297625698dfef&auto=format&fit=crop&w=1573&q=80);
+}
+
+/********************************/
+/*          Media Queries       */
+/********************************/
+@media screen and (min-width: 980px){
+  .hero { width: 980px; }    
+}
+@media screen and (max-width: 640px){
+  .hero h1 { font-size: 4em; }    
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #1abc9c;
+  color: white;
+  text-align: center;
+  padding-top: 8px;
+  clear: both;
+  z-index: 1000;
+}
+
+        .header {
+      position: fixed;
+      left: 0;
+      top:0;
+      width: 100%;
+      background-color: #1abc9c;
+      color: white;
+      text-align: center;
+      padding-top: 8px;
+      clear: both;
+      z-index: 1000;
+    }
+</style>
+  
+</head>
+<body>
+{% import 'bootstrap/wtf.html' as wtf %}
+
+<!-- Création du carousel d'accueil -->
+<div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+  <!-- Overlay -->
+  <div class="overlay"></div>
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
+    <li data-target="#bs-carousel" data-slide-to="1"></li>
+  </ol>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item slides active">
+      <div class="slide-1"></div>
+      <div class="hero">
+        <hgroup>
+            <h1>Découvrez</h1>        
+            <h3>Découvrez de nouvelles villes qui vous ressemblent à partir de recommandations personnalisées</h3>
+        </hgroup>
+        <br />
+        <br />
+        <a class="scroll" href='/login'><b>Démarrez dès maintenant</b></a>
+      </div>
+    </div>
+    <div class="item slides">
+      <div class="slide-2"></div>
+      <div class="hero">        
+        <hgroup>
+            <h1>Planifiez</h1>        
+            <h3>Planifiez un trajet correspondant à vos attentes et respectant vos contraintes</h3>
+        </hgroup>  
+        <br />    
+        <br /> 
+        <a class="scroll" href='/login'><b>Démarrez dès maintenant</b></a>
+      </div>
+    </div>
+  </div> 
+</div>
+
+    <div class="footer">
+  		<p>
+		<img src="{{ url_for('static', filename='img/logo.png') }}" alt="Italian Trulli" style="width:30px;height:30px;">
+		Copyright © SmartPlanner - Tous droits réservés
+		</p>
+	</div>
+  </body>
+
+</html>

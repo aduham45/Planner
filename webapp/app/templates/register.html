@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <link rel="stylesheet" media="screen" href ="static/css/bootstrap-4.1.1/dist/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css"/>
+        <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.1/typeahead.bundle.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.js"></script>
+        <style>
+}
+
+    </style>
+    </head>
+
+    <body>
+        <video autoplay muted loop id="myVideo">
+          <source src="{{ url_for('static', filename='img/video.mp4') }}" type="video/mp4">
+        </video>
+        {% import 'bootstrap/wtf.html' as wtf %}
+        <div class="container_register" >
+            <div class="row">
+                <form  class= "form form-horizontal" method="post" role="form" id="register_form">
+                    {{ register_form.csrf_token }}
+                    <div class="form-group">
+                        <h1>Devenez membre</h1>
+                            {{ wtf.form_field(register_form.register_nom) }}
+                            {{ wtf.form_field(register_form.register_prenom) }}
+                            {{ wtf.form_field(register_form.register_email) }}
+                            {{ wtf.form_field(register_form.register_password) }}
+                            {{ wtf.form_field(register_form.register_rue) }}
+                            {{ wtf.form_field(register_form.register_cp) }}
+                            {{ wtf.form_field(register_form.register_ville) }}
+                            {{ wtf.form_field(register_form.register_tags) }}
+                            {{ wtf.form_field(register_form.register_submit) }}
+                    </div>
+                </form>
+             </div>
+        </div>
+        <br></br>
+        <div class="footer">
+      		<p>
+    		<img src="{{ url_for('static', filename='img/logo.png') }}" alt="Italian Trulli" style="width:30px;height:30px;">
+    		Copyright © SmartPlanner - Tous droits réservés
+		</p>
+	</div> 
+    </body>
+</html>

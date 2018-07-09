@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Formulaire</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/css/tokenfield-typeahead.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/css/bootstrap-tokenfield.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
+  <!--<script src="vendor/jquery/jquery-1.11.2.min.js"></script>
+  <script src="vendor/typeahead/typeahead.js"></script>
+  <script src="vendor/tagsinput/bootstrap-tagsinput.js"></script>-->
+  <style>
+
+  @font-face {
+    font-family: 'Hero';
+    src: url('Hero.otf');
+  }
+
+	html, body {
+	  height:100%;
+	  padding: 0;
+	  margin: 0;
+	}
+	
+
+	html {
+	  background:url(https://images.unsplash.com/photo-1494941506775-1b7042cfee6f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6e4efb75d60af94b7ecc3953184589b2&auto=format&fit=crop&w=1352&q=80) no-repeat;
+	  background-size:100%
+	  
+	}
+
+	body {
+	  background:rgba(255,255,255,0.00);
+	}
+	
+	.parent {
+		display: flex;
+	}
+	.container {
+		border :transparent;
+		border-radius: 5px;
+		margin-top: 100px;
+		background: rgba(255,255,255,0.65);
+	}
+
+  .hero {
+    font-family: 'Hero';
+    color: blue;
+    font-size: 3em;
+  }
+
+  </style>
+</head>
+<body>
+  <div class="hero"> Test police Hero</div>
+<div class="parent">
+<div class="container">
+  <h2>Formulaire de renseignement</h2>
+
+  <form class="form-horizontal" action="/map" role="form">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Adresse de départ</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="depart" name="depart" method="get" placeholder="Gare de Lyon, Paris" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="form.depart()">Jour du départ</label>
+      <div class="col-sm-10">          
+        <input type="date" class="form-control" id="date_dep">
+      </div>
+    </div>
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Heure du départ</label>
+      <div class="col-sm-10">          
+        <input type="time" class="form-control" id="time_dep">
+      </div>
+    </div>
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="email">Adresse d'arrivée</label>
+      <div class="col-sm-10">
+        
+        <input type="text" class="form-control" id="arrivee" name="arrivee" method="get" placeholder="Vieux Port, Marseille" required>
+        
+      </div>
+    </div>
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Jour d'arrivée</label>
+      <div class="col-sm-10">          
+        <input type="date" class="form-control" id="date_arr">
+      </div>
+    </div>
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Heure d'arrivée</label>
+      <div class="col-sm-10">          
+        <input type="time" class="form-control" id="time_arr">
+      </div>
+    </div>
+
+
+    <input type="text" class="form-control" id="escales" name="escales" method="get" placeholder="Entrez les escales que vous souhaitez réaliser"/>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.1/typeahead.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.js"></script>
+    <script type="text/javascript">
+		var engine = new Bloodhound({
+		  local: [{value: 'red'}, {value: 'blue'}, {value: 'green'} , {value: 'yellow'}, {value: 'violet'}, {value: 'brown'}, {value: 'purple'}, {value: 'black'}, {value: 'white'}],
+		  datumTokenizer: function(d) {
+		    return Bloodhound.tokenizers.whitespace(d.value);
+		  },
+		  queryTokenizer: Bloodhound.tokenizers.whitespace
+		});
+
+		engine.initialize();
+
+		$('#escales').tokenfield({
+		  typeahead: [null, { source: engine.ttAdapter() }]
+		});
+    </script>
+    <br />
+	<div class="form-group" role="group" aria-label="...">
+		<label class="control-label col-sm-2" for="pwd">Moyen de transport</label>
+	   <button type="button" class="btn btn-default">Voiture</button>
+	   <button type="button" class="btn btn-default">Transports en commun</button>
+	   <button type="button" class="btn btn-default">A pied</button>
+	</div>
+	<div class="form-group" role="group" aria-label="...">
+		<label class="control-label col-sm-2" for="pwd">Durée maximale de trajet sans pause</label>
+	   <button type="button" class="btn btn-default">1 h</button>
+	   <button type="button" class="btn btn-default">2 h</button>
+	   <button type="button" class="btn btn-default">3 h</button>
+	   <button type="button" class="btn btn-default">4 h</button>
+	</div>
+	<div class="form-group" role="group" aria-label="...">
+		<label class="control-label col-sm-2" for="pwd">Durée maximale du repas</label>
+	   <button type="button" class="btn btn-default">15 min</button>
+	   <button type="button" class="btn btn-default">30 min</button>
+	   <button type="button" class="btn btn-default">45 min</button>
+	   <button type="button" class="btn btn-default">1 h</button>
+	   <button type="button" class="btn btn-default">1 h 30</button>
+	</div>
+	<input type="text" class="form-control" id="tags" value="red,green,blue" />
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.1/typeahead.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.js"></script>
+    <script type="text/javascript">
+		$('#tags').tokenfield({
+		  autocomplete: {
+			source: ['red','blue','green','yellow','violet','brown','purple','black','white'],
+			delay: 100
+		  },
+		  showAutocompleteOnFocus: true
+		})
+    </script>
+	<br></br>
+	<div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Soumettre</button>
+      </div>
+    </div>
+  </form>
+</div>
+</div>
+
+</body>
+</html>

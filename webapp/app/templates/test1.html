@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/css/tokenfield-typeahead.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/css/bootstrap-tokenfield.css">
+  <!--<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">-->
+  <script src="vendor/jquery/jquery-1.11.2.min.js"></script>
+  <script src="vendor/typeahead/typeahead.js"></script>
+  <script src="vendor/tagsinput/bootstrap-tagsinput.js"></script>
+
+<style>
+.fade-carousel {
+		position: relative;
+		height: 100vh;
+	}
+	.fade-carousel .carousel-inner .item {
+		height: 100vh;
+	}
+	.fade-carousel .carousel-indicators > li {
+		margin: 0 2px;
+		margin-bottom: 30px;
+		background-color: #f39c12;
+		border-color: #f39c12;
+		opacity: .7;
+	}
+	.fade-carousel .carousel-indicators > li.active {
+	  width: 10px;
+	  height: 10px;
+	  opacity: 1;
+	}
+
+	/********************************/
+	/*          Hero Headers        */
+	/********************************/
+	.hero {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		z-index: 3;
+		color: #fff;
+		text-align: center;
+		text-transform: uppercase;
+		text-shadow: 1px 1px 0 rgba(0,0,0,.75);
+		  -webkit-transform: translate3d(-50%,-50%,0);
+			 -moz-transform: translate3d(-50%,-50%,0);
+			  -ms-transform: translate3d(-50%,-50%,0);
+			   -o-transform: translate3d(-50%,-50%,0);
+				  transform: translate3d(-50%,-50%,0);
+	}
+
+	.hero h1 {
+		font-size: 6em;    
+		font-weight: bold;
+		margin: 0;
+		padding: 0;
+	}
+
+	.fade-carousel .carousel-inner .item .hero {
+		opacity: 0;
+		-webkit-transition: 2s all ease-in-out .1s;
+		   -moz-transition: 2s all ease-in-out .1s; 
+			-ms-transition: 2s all ease-in-out .1s; 
+			 -o-transition: 2s all ease-in-out .1s; 
+				transition: 2s all ease-in-out .1s; 
+	}
+	.fade-carousel .carousel-inner .item.active .hero {
+		opacity: 1;
+		-webkit-transition: 2s all ease-in-out .1s;
+		   -moz-transition: 2s all ease-in-out .1s; 
+			-ms-transition: 2s all ease-in-out .1s; 
+			 -o-transition: 2s all ease-in-out .1s; 
+				transition: 2s all ease-in-out .1s;    
+	}
+
+	/********************************/
+	/*            Overlay           */
+	/********************************/
+	.overlay {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 2;
+		background-color: #080d15;
+		opacity: .4;
+	}
+
+	/********************************/
+	/*          Custom Buttons      */
+	/********************************/
+	a.scroll {padding: 20px 40px; border-radius: 5px; font-size: 1.2em;}
+	a.scroll,
+	a.scroll:focus {
+		color: #f5f5f5;
+		background-color: #1abc9c;
+		border-color: #1abc9c;
+		outline: none;
+		margin: 20px auto;
+	}
+
+	/********************************/
+	/*       Slides backgrounds     */
+	/********************************/
+	.fade-carousel .slides .slide-1, 
+	.fade-carousel .slides .slide-2{
+	  height: 100vh;
+	  background-size: cover;
+	  background-position: center center;
+	  background-repeat: no-repeat;
+	}
+	.fade-carousel .slides .slide-1 {
+	  background-image: url(https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=79f96121806d64f986dc5e5d9308afb1&auto=format&fit=crop&w=1353&q=80); 
+	}
+	.fade-carousel .slides .slide-2 {
+	  background-image: url(https://images.unsplash.com/photo-1488375634201-b85b28653a79?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1cc3542fead73589bb0297625698dfef&auto=format&fit=crop&w=1573&q=80);
+	}
+
+	/********************************/
+	/*          Media Queries       */
+	/********************************/
+	@media screen and (min-width: 980px){
+		.hero { width: 980px; }    
+	}
+	@media screen and (max-width: 640px){
+		.hero h1 { font-size: 4em; }    
+	}
+
+
+	html, body {
+	  height:100%;
+	  padding: 0;
+	  margin: 0;
+	  font-family: 'Muli';
+	 
+	}
+
+	
+	@font-face {
+		font-family: 'heropolice';
+		src: url('Hero.otf');
+	}
+
+
+
+	html {
+	  background-size:100%;
+	  
+	}
+
+	body {
+	  background:rgba(255,255,255,0.00);
+	}
+	
+	#parent {
+
+		background:url(https://images.unsplash.com/photo-1453787817889-57ec065fa4a4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=aaa30bd6043552f970a26845efd3ca00&auto=format&fit=crop&w=1350&q=80) no-repeat;
+		background-size: 100%;
+		display: flex;
+		height: 100vh;
+	}
+	.container {
+    	position: relative;
+		border :transparent;
+		border-radius: 12px;
+		margin-top: 100px;
+		background: rgba(255,255,255,0.65);
+		height: 80vh;
+		/*backdrop-filter: blur(2px);*/
+	}
+
+
+
+     .ex {
+     	text-align: right;
+     }
+
+
+    .footer {
+	    position: fixed;
+	    left: 0;
+	    bottom: 0;
+	    width: 100%;
+	    background-color: #1abc9c;
+	    color: white;
+	    text-align: center;
+	    padding-top: 8px;
+	    clear: both;
+	    z-index: 900;
+	}
+	
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+#wrapper,
+#page-content-wrapper {
+    height: 100%;
+    width: 100%;
+}
+.container-fluid,
+.row,
+.col-lg-12 {
+  height: 100%;
+  width: 100%;
+  padding-bottom: 50px;
+}
+
+.box-shadow-menu {
+  position: relative;
+  padding-left: 1.25em;
+}
+.box-shadow-menu:before {
+  content: "";
+  position: absolute;
+}
+/* hamburger menu pseudo element gradient */
+
+.gradient-menu {
+  padding-left: 1.25em;
+  position: relative;
+}
+.gradient-menu:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.21em;
+  bottom: 0.21em;
+  width: 1em;
+  background: linear-gradient(to bottom, black, black 20%, white 20%, white 40%, black 40%, black 60%, white 60%, white 80%, black 80%, black 100%);
+}
+/* http://www.jqueryscript.net/demo/Bootstrap-Sidebar-Extension-With-jQuery-CSS-CSS3/ */
+
+/*!
+ * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Toggle Styles */
+
+.nav-tabs>li {
+  float: none;
+}
+.nav-tabs {
+  border-bottom: 0;
+}
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
+  margin: 0;
+  border-radius: 0;
+}
+#wrapper {
+  padding-left: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+#wrapper.toggled {
+  padding-left: 250px;
+}
+
+#sidebar-wrapper {
+  z-index: 1000;
+  position: absolute;
+  left: 250px;
+  width: 0;
+  height: 95%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #fff;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  z-index: 950;
+}
+#wrapper.toggled #sidebar-wrapper {
+  width: 250px;
+}
+#page-content-wrapper {
+  width: 100%;
+  position: absolute;
+  padding: 15px;
+}
+#wrapper.toggled #page-content-wrapper {
+  position: absolute;
+  margin-right: -250px;
+}
+/* Sidebar Styles */
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sidebar-nav li {
+  text-indent: 20px;
+  line-height: 40px;
+}
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+  color: #999999;
+}
+.sidebar-nav li a:hover {
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+}
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none;
+}
+.sidebar-nav > .sidebar-brand {
+  height: 65px;
+  font-size: 18px;
+  line-height: 60px;
+}
+.sidebar-nav > .sidebar-brand a {
+  color: #999999;
+}
+.sidebar-nav > .sidebar-brand a:hover {
+  color: #fff;
+  background: none;
+}
+
+@media(min-width:768px) {
+  #wrapper {
+    padding-left: 250px;
+  }
+  #wrapper.toggled {
+    padding-left: 0;
+  }
+  #sidebar-wrapper {
+    width: 250px;
+  }
+  #wrapper.toggled #sidebar-wrapper {
+    width: 0;
+  }
+  #page-content-wrapper {
+    padding: 20px;
+    position: relative;
+  }
+  #wrapper.toggled #page-content-wrapper {
+    position: relative;
+    margin-right: 0;
+  }
+}
+
+#form {
+    z-index: 950;
+}
+
+
+
+</style>
+</head>
+<body>
+<div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+  <!-- Overlay -->
+  <div class="overlay"></div>
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
+    <li data-target="#bs-carousel" data-slide-to="1"></li>
+  </ol>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+
+    <div class="item slides active">
+      <div class="slide-1"></div>
+      <div class="hero">
+        <hgroup>
+            <h1>Découvrez</h1>        
+            <h3>Découvrez de nouvelles villes qui vous ressemblent à partir de recommandations personnalisées</h3>
+        </hgroup>
+        <br />
+        <br />
+        <a class="scroll" href="#parent"><b>Démarrez dès maintenant</b></a>
+      </div>
+    </div>
+    <div class="item slides">
+      <div class="slide-2"></div>
+      <div class="hero">        
+        <hgroup>
+            <h1>Planifiez</h1>        
+            <h3>Planifiez un trajet correspondant à vos attentes et respectant vos contraintes</h3>
+        </hgroup>  
+        <br />    
+        <br /> 
+        <a class="scroll" href="#parent"><b>Démarrez dès maintenant</b></a>
+      </div>
+    </div>
+  </div> 
+</div>
+
+
+<div id="parent">
+<div class="container">
+  <br />
+  <br />
+  <form class="form-horizontal" action="" role="form" id="form">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Adresse de départ(*)</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="depart" name="depart" method="get" placeholder="Gare de Lyon, Paris" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Jour du départ(*)</label>
+      <div class="col-sm-10">          
+        <input type="date" class="form-control" id="date_dep" name="date_dep" method="get" >
+      </div>
+    </div>
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Heure du départ(*)</label>
+      <div class="col-sm-10">          
+        <input type="time" class="form-control" id="time_dep" name="time_dep" method="get" >
+      </div>
+    </div>
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="email">Adresse d'arrivée(*)</label>
+      <div class="col-sm-10">
+        
+        <input type="text" class="form-control" id="arrivee" name="arrivee" method="get" placeholder="Vieux Port, Marseille" required>
+        
+      </div>
+    </div>
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Jour d'arrivée(*)</label>
+      <div class="col-sm-10">          
+        <input type="date" class="form-control" id="date_arr" name="date_arr" method="get" >
+      </div>
+    </div>
+    
+     <div id="loadingGif" style="display:none; position: absolute; margin-top: 0px; margin-left: 480px; z-index:900;"><img src="../static/loogo.gif" style=" border-radius: 30px; height: 140%; width: 140%;"></div>
+     
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Heure d'arrivée(*)</label>
+      <div class="col-sm-10">          
+        <input type="time" class="form-control" id="time_arr" name=time_arr" method="get">
+      </div>
+    </div>
+
+  <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Escales</label>
+      <div class="col-sm-10">
+    <input type="text" class="form-control" id="escales" name="escales" method="get" placeholder="Entrez vos escales"/>
+  </div>
+</div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.1/typeahead.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.js"></script>
+    <script type="text/javascript">
+		var engine = new Bloodhound({
+		  local: [{value: 'red'}, {value: 'blue'}, {value: 'green'} , {value: 'yellow'}, {value: 'violet'}, {value: 'brown'}, {value: 'purple'}, {value: 'black'}, {value: 'white'}],
+		  datumTokenizer: function(d) {
+		    return Bloodhound.tokenizers.whitespace(d.value);
+		  },
+		  queryTokenizer: Bloodhound.tokenizers.whitespace
+		});
+
+		engine.initialize();
+
+		$('#escales').tokenfield({
+		  typeahead: [null, { source: engine.ttAdapter() }]
+		});
+
+
+    </script>
+    	<div class="form-group">
+      <label class="control-label col-sm-2" for="email">Tags(*)</label>
+      <div class="col-sm-10">
+		<input type="text" class="form-control" id="tags" name="tags" method="get" value="Rock,Art,Museum" />
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.1/typeahead.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.js"></script>
+    <script type="text/javascript">
+		$('#tags').tokenfield({
+		  autocomplete: {
+			source: ['Cinema','Multiplex', 'Movie','Film','History','Museum', 'Art','Sport','Bar', 'Site', 'Concert', 'Music', 'Plaza', 'Hall', 'Gallery', 'Stadium', 'Bowling', 'School', 'Zoo','Park', 'Arts'],
+			delay: 100,
+		  },
+		  showAutocompleteOnFocus: true
+		})
+
+    </script>
+</div>
+</div>
+    <br />
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Moyen de transport(*)</label>
+      <div class="col-sm-10">
+	   <button type="button" class="btn btn-default">Voiture</button>
+	   <button type="button" class="btn btn-default">Transports en commun</button>
+	   <button type="button" class="btn btn-default">A pied</button>
+	</div>
+</div>
+   <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Durée maximale de trajet sans pause(*)</label>
+      <div class="col-sm-10">
+	   <button type="button" class="btn btn-default">1 h</button>
+	   <button type="button" class="btn btn-default">2 h</button>
+	   <button type="button" class="btn btn-default">3 h</button>
+	   <button type="button" class="btn btn-default">4 h</button>
+	</div>
+</div>
+	   <div class="form-group">
+    <label class="control-label col-sm-2" for="email">Durée maximale du repas(*)</label>
+      <div class="col-sm-10">
+	   <button type="button" class="btn btn-default">15 min</button>
+	   <button type="button" class="btn btn-default">30 min</button>
+	   <button type="button" class="btn btn-default">45 min</button>
+	   <button type="button" class="btn btn-default">1 h</button>
+	   <button type="button" class="btn btn-default">1 h 30</button>
+	</div>
+</div>
+   <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Optimisation(*)</label>
+      <div class="col-sm-10">
+	   <button type="button" class="btn btn-default">Distance</button>
+	   <button type="button" class="btn btn-default">Temps</button>
+	   <button type="button" class="btn btn-default">Affinité</button>
+	</div>
+</div>
+	<br />
+	<div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+      	<a class="goToMap" href="map">
+        <button type="submit" id="submit" href="#map" style="color: #f5f5f5; background-color: #1abc9c; border-color: #1abc9c; border-radius: 5px; padding: 5px;" onclick="showDiv()">Soumettre</button></a>
+      </div>
+    </div>
+  </form>
+</div>
+</div>
+
+
+
+<script type="text/javascript">
+// Select all links with hashes
+$('a[href*="#"]')
+  // Remove links that don't actually link to anything
+  .not('[href="#"]')
+  .not('[href="#0"]')
+  .click(function(event) {
+    // On-page links
+    if (
+      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+      && 
+      location.hostname == this.hostname
+    ) {
+      // Figure out element to scroll to
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      // Does a scroll target exist?
+      if (target.length) {
+        // Only prevent default if animation is actually gonna happen
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 700, function() {
+          // Callback after animation
+          // Must change focus!
+          var $target = $(target);
+          $target.focus();
+          if ($target.is(":focus")) { // Checking if the target was focused
+            return false;
+          } else {
+            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+            $target.focus(); // Set focus again
+          };
+        });
+      }
+    }
+  });
+</script>
+
+<div id="wrapper">
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav" id="side_bar">
+      <li class="sidebar-brand" style="font-weight: bold; color: #999999;">
+        <h1 style="color=#1abc9c;">Trajet</h1>
+      </li>
+      <hr>
+      <ul>
+      <li>
+      <script type="text/javascript">document.write(dep)</script></li></ul>
+    </ul>
+  </div>
+  <!-- /#sidebar-wrapper -->
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1>
+	    <a href="#menu-toggle" class="gradient-menu" id="menu-toggle"></a>
+          &nbsp;Map&nbsp;<!-- a href="#menu-toggle" class="btn btn-default" >Toggle Sidebar</a -->
+          </h1>
+          <!-- you can use tables or divs for the overall layout -->
+          <div id="map"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /#page-content-wrapper -->
+</div>
+<!-- /#wrapper -->
+
+<script>
+function showDiv() {
+  document.getElementById('loadingGif').style.display = "block";
+  setTimeout(function() {
+    document.getElementById('loadingGif').style.display = "none";
+    document.getElementById('map').style.display = "block";
+  },30000);  
+}
+</script>
+
+
+<script>    
+// on crée un tableau avec tous les points du voyage du départ à l'arrivee avec toutes les escales 
+var urlParams;
+(window.onpopstate = function () {
+    var match,
+        pl     = /\+/g,  // Regex for replacing addition symbol with a space
+        search = /([^&=]+)=?([^&]*)/g,
+        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+        query  = window.location.search.substring(1);
+
+    urlParams = {};
+    while (match = search.exec(query))
+       urlParams[decode(match[1])] = decode(match[2]);
+})();
+
+var esca=[];
+var dep = urlParams["depart"];
+var arr = urlParams["arrivee"];
+var esc = urlParams["escales"],
+  wordArray = esc.split(',');
+
+var voyage=[dep];
+for (var i=0; i<esc.length;i++) {
+  voyage.push(wordArray[i])
+}
+voyage.push(arr); 
+
+// Récupération des tags sous forme de tableau
+var tag = urlParams["tags"],
+	tags = tag.split(',');
+
+var heure_dep = urlParams["time_dep"],
+	dep_time = heure_dep.split(',');
+var date_dep = urlParams["date_dep"];
+
+
+var data = {
+	Depart: dep,
+	depart_heure: dep_time,
+	depart_jour: date_dep,
+	Arrivee: arr,
+	Escales: wordArray,
+	tags_users: tags
+}
+
+
+$('#submit').click(function() {
+    $.ajax({
+      type: "POST",
+      contentType: "application/json;charset=utf-8",
+      url: "/test",
+      traditional: "true",
+      data: JSON.stringify(data),
+      dataType: "json"
+      });
+});
+
+var recom = {{ test|tojson }};
+
+
+function initMap() {
+
+         var myWrapper = $("#wrapper");
+          $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+            myWrapper.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
+              // code to execute after transition ends
+              google.maps.event.trigger(map, 'resize');
+            });
+          });
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          //center: ('Amiens, France')
+        });
+        
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer({
+          draggable: true,
+          map: map,
+          panel: document.getElementById('right-panel'),
+          suppressMarkers : false
+        });
+  
+        directionsDisplay.addListener('directions_changed', function() {
+        });
+
+        displayRoute(dep, arr, directionsService,
+            directionsDisplay);
+                
+        
+        /*geocoder = new google.maps.Geocoder();
+        for (var i = 0; i < voyage.length; i++) {
+            codeAddress(geocoder, map, voyage[i]);
+       }*/
+}
+      
+      /*function codeAddress(geocoder, map, address) {
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            map.setCenter(results[0].geometry.location);
+            
+            switch(address) {
+                case dep:
+                    color = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
+                    content = address;
+                    break;
+                case arr:
+                    color = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+                    content = address;
+                    break;
+                default:
+                    color = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
+                    content = address;
+            }            
+            var infowindow = new google.maps.InfoWindow({
+              content: content
+            });
+            
+            var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location,
+              icon : color
+            });
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
+            });
+            
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }*/
+    
+      function displayRoute(origin, destination, service, display) {
+          var waypts=[];
+          for (var i = 0; i < wordArray.length ; i++) { 
+            if (!wordArray[i]) {
+                // si l'escale n'existe pas on n'ajoute rien a waypts
+                waypts=waypts;
+            } else {
+                waypts.push({
+                    location: wordArray[i]
+                });
+            }         
+          }
+          for (var i = 0; i < recom.length ; i++) { 
+            if (!recom[i][0]) {
+                // si l'escale n'existe pas on n'ajoute rien a waypts
+                waypts=waypts;
+            } else {
+                waypts.push({
+                    location: recom[i][0]
+                });
+            }         
+          } 
+        service.route({
+          origin: origin,
+          destination: destination,
+          waypoints: waypts,
+          travelMode: 'DRIVING',
+          avoidTolls: true,
+          optimizeWaypoints: true
+        }, function(response, status) {
+          if (status === 'OK') {
+            display.setDirections(response);
+            alert(recom)
+          } else {
+            alert('Could not display directions due to: ' + status);
+          }
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8pxsl2jFQSwshMT2I5Weue8CKLgxalY8&callback=initMap">
+    </script>
+    <div class="footer">
+  		<p>Copyright © SmartPlanner - Tous droits réservés</p>
+	</div>
+  </body>
+
+</html>

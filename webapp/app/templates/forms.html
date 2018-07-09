@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    {% extends "base.html" %}
+    {% import 'bootstrap/wtf.html' as wtf %}
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.js"></script>
+  
+	{% block app_content %}
+	<h1>Formulaire de renseignement</h1>
+    <div class="row">
+        <div class="col-md-4">     
+            <form class="form form-horizontal" method="post" role="form">
+              {{ form.csrf_token }}
+              {{ wtf.form_errors(form, hiddens="only") }}
+              {{ wtf.form_field(form.depart) }}
+              {{ wtf.form_field(form.start_date_time) }}
+              {{ wtf.form_field(form.arrivee) }}
+              {{ wtf.form_field(form.mode) }}
+              {{ wtf.form_field(form.pause_voyage) }}
+              {{ wtf.form_field(form.tps_repas) }}
+              {{ wtf.form_field(form.tags) }}
+              {{ wtf.form_field(form.submit) }}
+			          <div class="col-md-2">
+              }
+              }
+            <div class="escales">
+            {{ wtf.form_field(form.choix_escales) }}
+            </div>
+        </div>
+		
+        <div class="row">
+			<div class="col-md-1">
+				{{ wtf.form_field(form.addEscales) }}
+				{{ wtf.form_field(form.deleteEscales) }}	
+			<div>
+				<button type="submit" class="btn btn-success">Soumettre</button>
+			</div>
+		</div>
+		</div>
+			</form>
+		</div>
+	</div>
+
+	{% endblock %}
+</html>
+
+
+
+
+
+
+<form class="form form-horizontal" method="post" role="form">
+  {{ form.hidden_tag() }}
+  {{ wtf.form_errors(form, hiddens="only") }}
+  {{ wtf.form_field(form.depart) }}                         
+  <label class="control-label col-sm-2" for="pwd">Jour du départ</label>         
+  <input type="date" class="form-control" id="date_dep">
+  <label class="control-label col-sm-2" for="pwd">Heure du départ</label>       
+  <input type="time" class="form-control" id="time_dep">
+  {{ wtf.form_field(form.arrivee) }}
+  <label class="control-label col-sm-2" for="pwd">Jour d'arrivée</label>  
+  <input type="date" class="form-control" id="date_arr">
+  <label class="control-label col-sm-2" for="pwd">Heure d'arrivée</label>      
+  <input type="time" class="form-control" id="time_arr">
+  <input type="text" class="form-control" id="choix_escales" placeholder="Entrez les escales que vous souhaitez réaliser"/>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.1/typeahead.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.js"></script>
+    <script type="text/javascript">
+    var engine = new Bloodhound({
+      local: [{value: 'red'}, {value: 'blue'}, {value: 'green'} , {value: 'yellow'}, {value: 'violet'}, {value: 'brown'}, {value: 'purple'}, {value: 'black'}, {value: 'white'}],
+      datumTokenizer: function(d) {
+        return Bloodhound.tokenizers.whitespace(d.value);
+      },
+      queryTokenizer: Bloodhound.tokenizers.whitespace
+    });
+
+    engine.initialize();
+
+    $('#choix_escales').tokenfield({
+      typeahead: [null, { source: engine.ttAdapter() }]
+    });
+    </script>
+  <label class="control-label col-sm-2" for="pwd">Moyen de transport</label>
+       <button type="button" class="btn btn-default">Voiture</button>
+       <button type="button" class="btn btn-default">Transports en commun</button>
+       <button type="button" class="btn btn-default">A pied</button>
+    </div>
+    <div class="form-group" role="group" aria-label="...">
+      <label class="control-label col-sm-2" for="pwd">Durée maximale de trajet sans pause</label>
+       <button type="button" class="btn btn-default">1 h</button>
+       <button type="button" class="btn btn-default">2 h</button>
+       <button type="button" class="btn btn-default">3 h</button>
+       <button type="button" class="btn btn-default">4 h</button>
+    </div>
+    <div class="form-group" role="group" aria-label="...">
+      <label class="control-label col-sm-2" for="pwd">Durée maximale du repas</label>
+       <button type="button" class="btn btn-default">15 min</button>
+       <button type="button" class="btn btn-default">30 min</button>
+       <button type="button" class="btn btn-default">45 min</button>
+       <button type="button" class="btn btn-default">1 h</button>
+       <button type="button" class="btn btn-default">1 h 30</button>
+    </div>
+<input type="text" class="form-control" id="tags" value="red,green,blue" />
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.1/typeahead.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.js"></script>
+    <script type="text/javascript">
+    $('#tags').tokenfield({
+      autocomplete: {
+      source: ['red','blue','green','yellow','violet','brown','purple','black','white'],
+      delay: 100
+      },
+      showAutocompleteOnFocus: true
+    })
+    </script>
+  {{ wtf.form_field(form.submit) }}
+
+</form>

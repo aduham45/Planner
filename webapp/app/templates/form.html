@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Smart Planner - Formulaire</title>
+        <link rel="stylesheet" media="screen" href ="static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="static/css/bootstrap-theme.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet"> 
+        <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css"/>
+       <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+       <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.1/typeahead.bundle.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.js"></script>
+        <script type="text/javascript">
+    </script>
+    <style>
+    body {
+        margin-top: -2%;
+    }
+    html { 
+      margin:0;
+      padding:0;
+
+    } 
+    /*#parent {
+    	background-size: 100%;
+    	display: flex;
+    	height: 100vh;
+    }*/ 
+    .container{
+      position:absolute;
+      height:97%;
+      width:60%;
+      font-family:Helvetica;
+      color:#000;
+      background:rgba(255,255,255,0.55);
+      padding:30px 0px;
+      margin-left:20%;
+      margin-right:80%;
+      margin-top:3%
+    } 
+    .row{
+        margin-top:1%;
+    } 
+    .col {
+        width: 75%;
+        margin-left: 12%;
+    }
+    input[type=checkbox], input[type=radio] {
+        margin: 4px 0 0;
+        margin-top: 1px\9;
+        margin-left: 5%;
+        line-height: normal;
+    }
+
+    #form {
+      width: 70%;
+    }
+
+    .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: #1abc9c;
+      color: white;
+      text-align: center;
+      padding-top: 8px;
+      clear: both;
+      z-index: 1000;
+    }
+    </style>
+
+    </head>
+    <body>
+<video autoplay muted loop id="myVideo">
+  <source src="{{ url_for('static', filename='img/video.mp4') }}" type="video/mp4">
+</video>
+{% import 'bootstrap/wtf.html' as wtf %}
+        <div class="header">
+            <div class="form-group">
+                <div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <p class="mail">{{ session_email }}<p>
+                        </div>
+                        <div class="col-sm-4">
+                            <form  class= "form form-horizontal" method="post" role="form" id="logout_form">
+                                {{ logout_form.csrf_token }}
+                                {{ wtf.form_field(logout_form.logout_submit) }}
+                            </form>
+                        </div>
+                        <div class="col-sm-4">
+                            <form  class= "form form-horizontal" method="post" role="form" id="modif_form">
+                                {{ modif_form.csrf_token }}
+                                {{ wtf.form_field(modif_form.modif_submit) }} 
+                            </form>  
+                        </div>
+                    </div>                
+                </div>
+            </div>
+      </div>
+<div id="parent"> 
+    <div class="container">
+      <form class= "form form-horizontal" method="post" role="form" id="form">
+        {{ form.csrf_token }}
+        <div class="form-group">       
+            <div class="row">
+                <div class="col">
+                {{ wtf.form_field(form.add_dep) }}
+                </div>
+            </div>            
+            <div class="row">
+                <div class="col">
+                {{ wtf.form_field(form.j_dep) }}
+                </div>
+            </div>          
+            <div class="row">
+                <div class="col">
+                {{ wtf.form_field(form.h_dep) }}
+                </div>
+            </div>            
+            <div class="row">
+                <div class="col">
+                {{ wtf.form_field(form.add_arr) }}
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                {{ wtf.form_field(form.j_arr) }}
+                </div>
+            </div>          
+            <div class="row">
+                <div class="col">
+                {{ wtf.form_field(form.h_arr) }}
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col">
+                {{ wtf.form_field(form.max_escales) }}
+                </div>
+            </div>    
+            <div class="row">
+                <div class="col">
+                {{ wtf.form_field(form.escales) }}
+                </div>
+            </div>    
+            <div class="row">
+                <div class="col">
+                {{ form.locomotion.label }}
+                {% for subfield in form.locomotion %}
+                <tr>
+                    <td>{{ subfield }}</td>
+                    <td>{{ subfield.label }}</td>
+                </tr>
+                {% endfor %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                {{ form.optimisation.label }}
+                {% for subfield in form.optimisation %}
+                <tr>
+                    <td>{{ subfield }}</td>
+                    <td>{{ subfield.label }}</td>
+                </tr>
+                {% endfor %}
+                </div>
+            </div>     
+            <div class="row">
+                <div class="col">
+                {{ wtf.form_field(form.tags) }}
+                </div>
+            </div>    
+            <div class="row">
+                <div class="col">
+                {{ form.t_max.label }}
+                {% for subfield in form.t_max %}
+                <tr>
+                    <td>{{ subfield }}</td>
+                    <td>{{ subfield.label }}</td>
+                </tr>
+                {% endfor %}
+                </div>  
+            </div>
+            <div class="row">
+                <div class="col">
+                {{ form.d_max.label }}
+                {% for subfield in form.d_max %}
+                <tr>
+                    <td>{{ subfield }}</td>
+                    <td>{{ subfield.label }}</td>
+                </tr>
+                {% endfor %}
+                </div>  
+            </div>          
+            <div class="row">
+                <div class="col">
+                {{ form.t_repas.label }}
+                {% for subfield in form.t_repas %}
+                <tr>
+                    <td>{{ subfield }}</td>
+                    <td>{{ subfield.label }}</td>
+                </tr>
+                {% endfor %}
+                </div>
+            </div>
+            <br />
+            <div class="col">
+                <input type="submit" value="Submit" />
+            </div>
+        </div>            
+      </form>
+      <br> 
+    </div>
+</div>
+<br>      
+    {% block content %}
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+ 
+        {% for message in messages %}
+            {% if "Error" not in message[1]: %}
+                <div class="alert alert-info">
+                <strong>Success! </strong> {{ message[1] }}
+                </div>
+            {% endif %}
+ 
+            {% if "Error" in message[1]: %}
+                <div class="alert alert-warning">
+                {{ message[1] }}
+                </div>
+            {% endif %}
+        {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% endblock %}
+
+
+</script>
+</body>
+</html>

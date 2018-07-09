@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Planificateur Intelligent - Trajet</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      #wrapper,
+#page-content-wrapper {
+    height: 100%;
+    width: 100%;
+}
+.container-fluid,
+.row,
+.col-lg-12 {
+  height: 100%;
+  width: 100%;
+  padding-bottom: 50px;
+}
+
+.box-shadow-menu {
+  position: relative;
+  padding-left: 1.25em;
+}
+.box-shadow-menu:before {
+  content: "";
+  position: absolute;
+}
+/* hamburger menu pseudo element gradient */
+
+.gradient-menu {
+  padding-left: 1.25em;
+  position: relative;
+}
+.gradient-menu:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.21em;
+  bottom: 0.21em;
+  width: 1em;
+  background: linear-gradient(to bottom, black, black 20%, white 20%, white 40%, black 40%, black 60%, white 60%, white 80%, black 80%, black 100%);
+}
+
+/* Toggle Styles */
+
+.nav-tabs>li {
+  float: none;
+}
+.nav-tabs {
+  border-bottom: 0;
+}
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
+  margin: 0;
+  border-radius: 0;
+}
+#wrapper {
+  padding-left: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+#wrapper.toggled {
+  padding-left: 250px;
+}
+
+#sidebar-wrapper {
+  position: absolute;
+  left: 250px;
+  width: 0;
+  height: 95%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #fff;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  z-index: 800;
+}
+#wrapper.toggled #sidebar-wrapper {
+  width: 250px;
+}
+#page-content-wrapper {
+  width: 100%;
+  position: absolute;
+  padding: 15px;
+}
+#wrapper.toggled #page-content-wrapper {
+  position: absolute;
+  margin-right: -250px;
+}
+/* Sidebar Styles */
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+  height: 65px;
+  font-size: 18px;
+  line-height: 60px;
+}
+.sidebar-nav > .sidebar-brand a {
+  color: #999999;
+}
+.sidebar-nav > .sidebar-brand a:hover {
+  color: #fff;
+  background: none;
+}
+
+@media(min-width:768px) {
+  #wrapper {
+    padding-left: 250px;
+  }
+  #wrapper.toggled {
+    padding-left: 0;
+  }
+  #sidebar-wrapper {
+    width: 250px;
+  }
+  #wrapper.toggled #sidebar-wrapper {
+    width: 0;
+  }
+  #page-content-wrapper {
+    padding: 20px;
+    position: relative;
+  }
+  #wrapper.toggled #page-content-wrapper {
+    position: relative;
+    margin-right: 0;
+  }
+}
+      
+    </style>
+  </head>
+  <body>
+
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1>
+      <a href="#menu-toggle" class="gradient-menu" id="menu-toggle"></a>
+          &nbsp;Map&nbsp;<!-- a href="#menu-toggle" class="btn btn-default" >Toggle Sidebar</a -->
+          </h1>
+          <!-- you can use tables or divs for the overall layout -->
+          <div id="map"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /#page-content-wrapper -->
+</div>
+<script type="text/javascript">
+var dep = '{{ depart }}';
+var arr = '{{ arrivee }}';
+var tags = '{{ tags }}';
+var recom = '{{ test }}';
+var escales= ['{{ test[0][0] }}', '{{ test[1][0] }}', '{{ test[2][0] }}', '{{ test[3][0] }}']
+function initMap() {
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          //center: ('Amiens, France')
+        });
+        
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer({
+          draggable: true,
+          map: map,
+          panel: document.getElementById('right-panel'),
+          suppressMarkers : false
+        });
+  
+        directionsDisplay.addListener('directions_changed', function() {
+        });
+
+        displayRoute(dep, arr, directionsService,
+            directionsDisplay);
+                
+}
+      function displayRoute(origin, destination, service, display) {
+        var waypts=[];
+        for (var i = 0; i < escales.length ; i++) { 
+          if (!escales[i]) {
+              // si l'escale n'existe pas on n'ajoute rien a waypts
+              waypts=waypts;
+          } else {
+              waypts.push({
+                  location: escales[i]
+              });
+          }         
+        }
+        service.route({
+          origin: origin,
+          destination: destination,
+          waypoints: waypts,
+          travelMode: 'DRIVING',
+          avoidTolls: true,
+          optimizeWaypoints: true
+        }, function(response, status) {
+          if (status === 'OK') {
+            display.setDirections(response);
+            alert('{{ tags }}')
+          } else {
+            alert('Could not display directions due to: ' + status);
+          }
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8pxsl2jFQSwshMT2I5Weue8CKLgxalY8&callback=initMap">
+    </script>
+  </body>
+</html>

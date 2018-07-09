@@ -1,0 +1,137 @@
+    html { 
+      margin:0;
+      padding:0;
+
+    }
+    
+body {
+  font-family: 'Muli';
+}
+
+    /*#parent {
+    	background-size: 100%;
+    	display: flex;
+    	height: 100vh;
+    }*/
+
+    #myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+    .login_container {
+      position: relative;
+      top: 0%;
+      margin-top: 15%;
+      border: transparent;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.65);
+      max-width: 500px;
+      padding-top: 2%;
+      padding-left: 5%;
+      padding-right: 15px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .container_register {
+      position: relative;
+      top: 3%;
+      margin-top: 5%;
+      border: transparent;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.65);
+      max-width: 500px;
+        padding-right: 15px;
+        padding-left: 5%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    #modif_submit,
+    #logout_submit,
+    #login_submit,
+    #register_submit {
+      background-color: #1abc9c;
+      border-color: white;
+      color: white;
+    }
+
+    #logout_submit,
+    #modif_submit {
+      margin-top: -5%;
+    }
+
+    .form-group {
+      margin-top: 1rem;
+    }
+
+        .header {
+      position: fixed;
+      left: 0;
+      top:0;
+      width: 100%;
+      background-color: #1abc9c;
+      color: white;
+      text-align: center;
+      padding-top: 8px;
+      clear: both;
+      z-index: 1000;
+      max-height: 50px;
+    }
+
+        .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: #1abc9c;
+      color: white;
+      text-align: center;
+      padding-top: 8px;
+      clear: both;
+      z-index: 1000;
+      max-height: 50px;
+    }
+
+    .mail {
+      height: 20px;
+      line-height: 35px;
+      margin-top: -3%;
+    }
+        
+    .container{
+      position:absolute;
+      height:80%;
+      width:60%;
+      font-family:Helvetica;
+      color:#fff;
+      background:rgba(0,0,0,0.30);
+      padding:30px 0px;
+      margin-left:20%;
+      margin-right:80%;
+      margin-top:5%
+    }
+    
+    .row{
+        margin-top:1%;
+    }
+    
+    .col {
+        width: 75%;
+        margin-left: 12%;
+    }
+    
+    input[type=checkbox], input[type=radio] {
+        margin: 4px 0 0;
+        margin-top: 1px\9;
+        margin-left: 5%;
+        line-height: normal;
+    }
+
+    #form {
+      width: 70%;
+    }
